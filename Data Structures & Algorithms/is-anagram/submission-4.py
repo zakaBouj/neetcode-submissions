@@ -1,0 +1,17 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        freq = Counter(s)
+        
+        for char in t:
+            if char in freq:
+                if freq[char] != 1:
+                    freq[char] -= 1
+                else:
+                    del freq[char]
+            else:
+                return False
+
+        return True
